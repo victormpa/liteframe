@@ -4,10 +4,12 @@ on:
   push:
     branches:
       - main
+    tags:
+      - "v*.*.*"
 
 jobs:
   build:
-    name: Build package distribution
+    name: Build package
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -34,7 +36,7 @@ jobs:
           path: dist/
 
   publish:
-    name: Publish Python to PyPI
+    name: Publish to PyPI
     needs:
       - build
     runs-on: ubuntu-latest
